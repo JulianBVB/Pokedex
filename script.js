@@ -175,17 +175,25 @@ function loadStatsProgressBar() {
     let pokedexBgColor = document.getElementById('pokedex-bg');
     let bgColor = "type-" + currentPokedex['types'][0]['type']['name'];
 
-    document.getElementById('hp').style.width = hpProcent + "%";
-    document.getElementById('attack').style.width = attackProcent + "%";
-    document.getElementById('defense').style.width = defenseProcent + "%";
-    document.getElementById('spec.-att.').style.width = specialAttackProcent + "%";
-    document.getElementById('spec.-def.').style.width = specialDefenseProcent + "%";
-    document.getElementById('speed').style.width = speedProcent + "%";
+    let stats = [hpProcent, attackProcent, defenseProcent, specialAttackProcent, specialDefenseProcent, speedProcent, pokedexBgColor];
+
     pokedexBgColor.classList.add(bgColor);
 
 
+    for (let i = 0; i < stats.length; i++) {
+        const element = stats[i];
 
+        document.getElementById(pokedexInformation[i]).style.width = element + "%";
+
+        if (stats[i] > 50) {
+            document.getElementById(pokedexInformation[i]).style.backgroundColor = "green";
+        } else {
+            document.getElementById(pokedexInformation[i]).style.backgroundColor = "red";
+        }
+    }
 }
+
+
 
 
 /**

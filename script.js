@@ -63,6 +63,7 @@ async function loadPokemonDetails() {
 
 
         document.getElementById('picturePokemon' + i).src = currentPokemon['sprites']['other']['dream_world']['front_default'];
+        document.getElementById('card-title' + i).innerHTML = currentPokemon.name;
         document.getElementById('height' + i).innerHTML = currentPokemon.height + ' cm';
         document.getElementById('weight' + i).innerHTML = currentPokemon.weight + ' kg';
     }
@@ -238,22 +239,60 @@ function showMore() {
 
 
 
-
-/*
-function filterPokemon() {
+/**
+ * Check if search Pokemon include and create a container
+*/
+function searchPokemon() {
     let search = document.getElementById('searchPokemon').value;
-    search = search.toLowerCase();
 
-    document.getElementById('main').innerHTML = '';
+    if (allPokemons.includes(search)) {
+        z = allPokemons.indexOf(search);
 
-    for (let i = 0; i < allPokemons.length; i++) {
+        document.getElementById('main').innerHTML =
 
 
-        if (allPokemons[i].toLowerCase().includes(search)) {
-            document.getElementById('main').innerHTML =
-                `<div>TEST</div>`
-        }
+            `
+        <div class="pokemon_details">
+            <div class="card" style="width: 18rem;">
+                <img src="" id="picturePokemon${[z]}" class="card-img-top">
+                <div class="card-body">
+                    <h5 id="card-title${[z]}" class="card-title"></h5>
+                    <div class="card-body-display">
+                        <p>Höhe</p>
+                        <p id="height${[z]}"></p>
+                    </div>
+                    <div class="card-body-display">
+                        <p>Gewicht</p>
+                        <p id="weight${[z]}"></p>
+                    </div>
+                    <a onclick="openPokedex(${[z]})" class="btn btn-danger">Mehr Details</a>
+                </div>
+            </div>
+        </div>
+    `;
+
+    } else if (search === "") {
+        loadPokemons();
+    } else {
+        alert('Pokemon nicht gefunden');
     }
+
+    resultSearch(z)
+
 }
 
+/**
+ * Search the Information for the searched Pokemon
 */
+async function resultSearch(z) {
+
+    let urlResult = `https://pokeapi.co/api/v2/pokemon/${pokemons[z]['name']}`;
+    let response = await fetch(urlResult);
+    resultPokemon = await response.json();
+
+
+    document.getElementById('picturePokemon' + z).src = resultPokemon['sprites']['other']['dream_world']['front_default'];
+    document.getElementById('card-title' + z).innerHTML = resultPokemon.name;
+    document.getElementById('height' + z).innerHTML = resultPokemon.height + ' cm';
+    document.getElementById('weight' + z).innerHTML = resultPokemon.weight + ' kg';
+}

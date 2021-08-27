@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body onload=loadPokemons()>
+
+    <div class="overlay d-none" id="pokedex">
+
+        <div class="pokedex" id="pokedex-bg"style="width: 22rem;">
+            <div class="card-body">
+                <div class="pokedx-headline">
+                    <button onclick="closePokedex()" type="button" class="btn-close" aria-label="Close"></button>
+                    <h5 id="pokedex-name"></h5>
+                    <h5 id="pokedex-id"></h5>
+                </div>
+
+                <div class="pokedex-types" id="types"></div>
+
+                <div class="pokedex-image">
+                    <img src="" id="pokedex-image">
+                </div>
+            </div>
+
+            <div class="porgess-bar-stats">
+                <h1>Stats</h1>
+                <table class="progress-bar-container" id="pokedex-table"></table>
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class="header">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">Pokedex</a>
+                <form class="d-flex">
+                    <input onkeydown="filterPokemon()" class="form-control me-2" id="searchPokemon" type="search"
+                        placeholder="Pokemon" aria-label="Search">
+                    <button onclick="loadPokemon()" class="btn btn-outline-success" type="submit">Suchen</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="main " id="main"></div>
+
+    <div id="loadMore" class="loadMore">
+        <button onclick="showMore()" type="button" class="btn btn-danger">Mehr anzeigen</button>
+    </div>
+
+</body>
+
+</html>

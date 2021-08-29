@@ -175,7 +175,7 @@ function loadStatsProgressBar() {
     let pokedexBgColor = document.getElementById('pokedex-bg');
     let bgColor = "type-" + currentPokedex['types'][0]['type']['name'];
 
-    let stats = [hpProcent, attackProcent, defenseProcent, specialAttackProcent, specialDefenseProcent, speedProcent, pokedexBgColor];
+    let stats = [hpProcent, attackProcent, defenseProcent, specialAttackProcent, specialDefenseProcent, speedProcent,];
 
     pokedexBgColor.classList.add(bgColor);
 
